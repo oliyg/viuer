@@ -1,0 +1,31 @@
+{
+  "name": "viuer",
+  "version": "1.0.0",
+  "description": "file exploer web application",
+  "main": "index.js",
+  "scripts": {
+    "fix": "eslint --fix src",
+    "eslint": "eslint src"
+  },
+  "pre-commit": [
+    "fix",
+    "eslint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliyg/viuer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oliyg/viuer/issues"
+  },
+  "homepage": "https://github.com/oliyg/viuer#readme",
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1"
+  }
+}
