@@ -1,6 +1,6 @@
 {
   "name": "viuer",
-  "version": "0.3.10",
+  "version": "0.3.11",
   "description": "file exploer web application",
   "main": "index.js",
   "bin": {
