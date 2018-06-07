@@ -11,6 +11,7 @@ const mime = require('mime-types')
 // require self modules
 const autoOpenUrl = require('./utils/autoOpenUrl')
 const printLog = require('./utils/printLog')
+const compress = require('./utils/compress')
 // require file
 const config = require('./config')
 // template
@@ -36,7 +37,14 @@ const server = http.createServer(async (req, res) => {
         res.setHeader('Content-Type', 'text/plain')            
       }
       res.statusCode = 200
-      fs.createReadStream(filePath, { encoding: 'utf8' }).pipe(res) // read file
+      let readstream = fs.createReadStream(filePath, { encoding: 'utf8' }) // read file
+
+      // compress using gzip or deflate
+      if (ext.match(config.fileToCompress)) {
+        readstream = compress(readstream, req, res)
+      }
+
+      readstream.pipe(res)
     } else if (stats.isDirectory()) {
       const dir = await readDir(filePath) // read directory
       res.statusCode = 200
