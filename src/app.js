@@ -7,6 +7,7 @@ const readDir = promisify(fs.readdir)
 const path = require('path')
 const chalk = require('chalk') // terminal string styling
 const ejs = require('ejs')
+const mime = require('mime-types')
 // require self modules
 const autoOpenUrl = require('./utils/autoOpenUrl')
 const printLog = require('./utils/printLog')
@@ -27,8 +28,14 @@ const server = http.createServer(async (req, res) => {
 
     // test the filePath is file or directory
     if (stats.isFile()) {
+      const ext = path.extname(filePath).split('.').pop().toLowerCase()
+      const contentType = mime.lookup(ext)
+      if (contentType) {
+        res.setHeader('Content-Type', contentType)
+      } else {
+        res.setHeader('Content-Type', 'text/plain')            
+      }
       res.statusCode = 200
-      res.setHeader('Content-Type', 'text/plain')
       fs.createReadStream(filePath, { encoding: 'utf8' }).pipe(res) // read file
     } else if (stats.isDirectory()) {
       const dir = await readDir(filePath) // read directory
