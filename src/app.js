@@ -13,6 +13,7 @@ const autoOpenUrl = require('./utils/autoOpenUrl')
 const printLog = require('./utils/printLog')
 const compress = require('./utils/compress')
 const range = require('./utils/range')
+const isFresh = require('./utils/isFresh')
 // require file
 const config = require('./config')
 // template
@@ -37,6 +38,13 @@ const server = http.createServer(async (req, res) => {
         res.setHeader('Content-Type', contentType)
       } else {
         res.setHeader('Content-Type', 'text/plain')            
+      }
+
+      // test isFresh
+      if (isFresh(stats, req, res)) {
+        res.statusCode = 304
+        res.end()
+        return
       }
 
       let readstream = ''
