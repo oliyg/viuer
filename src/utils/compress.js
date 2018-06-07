@@ -1,5 +1,10 @@
 const { createGzip, createDeflate } = require('zlib')
-
+/**
+ * @param {*} readstream pipe a readstream
+ * @param {*} req request
+ * @param {*} res response
+ * @returns compressed readstream
+ */
 module.exports = function (readstream, req, res) {
   const acceptEncoding = req.headers['accept-encoding']
   if (!acceptEncoding || !acceptEncoding.match(/\b(gzip|deflate)\b/)) {
