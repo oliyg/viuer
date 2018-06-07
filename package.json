@@ -4,7 +4,7 @@
   "description": "file exploer web application",
   "main": "index.js",
   "bin": {
-      "viuer": "bin/viuer"
+    "viuer": "bin/viuer"
   },
   "scripts": {
     "fix": "eslint --fix src",
