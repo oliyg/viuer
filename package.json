@@ -1,12 +1,15 @@
 {
   "name": "viuer",
-  "version": "1.0.0",
+  "version": "0.3.10",
   "description": "file exploer web application",
   "main": "index.js",
+  "bin": {
+      "viuer": "bin/viuer"
+  },
   "scripts": {
     "fix": "eslint --fix src",
     "eslint": "eslint src",
-    "start": "nodemon ./src/app.js"
+    "start": "node ./src/entry.js"
   },
   "pre-commit": [
     "fix",
@@ -29,6 +32,7 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "ejs": "^2.6.1",
-    "mime-types": "^2.1.18"
+    "mime-types": "^2.1.18",
+    "yargs": "^11.0.0"
   }
 }

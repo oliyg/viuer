@@ -3,8 +3,11 @@ module.exports = {
   port: 8080,
   root: process.cwd(),
   autoOpenUrl: false,
+  // gzip or deflate compress
+  compress: true,
   fileToCompress: /(html|txt|js|css|json|md)$/, // gzip and deflate
   // Caching
+  cacheMode: true,
   cache: {
     lastModified: true,
     ETag: true,

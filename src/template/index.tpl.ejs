@@ -7,12 +7,23 @@
     <title><%= title %></title>
 </head>
 <body>
+    <style>
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+        a:hover {
+            color: black;
+            padding-right: 1rem;
+            border-right: 2px solid green;
+        }
+    </style>
     <a href="/">HOME</a>
     <br>
-    <ul>
+    <ol>
         <% files.forEach((file) => { %>
-            <li><a href="../<%= dir %>/<%= file %>"><%= dir %>/<%= file %></a></li>
+            <li><a href="../<%= dir %>/<%= file %>"><%= file %></a></li>
         <% }) %>
-    </ul>
+    </ol>
 </body>
 </html>
